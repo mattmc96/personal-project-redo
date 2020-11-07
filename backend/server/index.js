@@ -11,8 +11,8 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
 })
 
 const userRouter = require('./routes/User')
-app.user('/user', userRouter)
-//
+app.use('/user', userRouter)
+
 // passportConfig(passport)
 // app.use(session({
 //     secret: process.env.SESSION_SECRET,
@@ -29,11 +29,7 @@ app.user('/user', userRouter)
 // app.use(passport.initialize())
 //
 // app.use(passport.session())
-// app.get('/', (req, res) => res.send('INDEX'))
-// app.post('/signIn', require('./routes/signIn'))
-//
-// app.post('/signOut', require('./routes/signOut'))
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT
 
 app.listen(PORT, () => console.log(`Server connected on port: ${PORT}`))

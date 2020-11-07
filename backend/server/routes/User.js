@@ -1,9 +1,18 @@
+require('dotenv').config()
 const express = require('express')
-const UserRouter = express.Router()
+const userRouter = express.Router()
 const passport = require('passport')
 const passportConfig = require('../../config/passport')
 const JWT = require('jsonwebtoken')
 const User = require('../../models/User')
+
+
+const signToken = userID => {
+    return JWT.sign({
+        iss: "chickensoup@dopeboy.fuego",
+        sub: userID,
+    }, "process.env.JWT_SECRET_KEY",{ expiresIn: "5000"})
+}
 
 userRouter.post('/register', (req, res) => {
     const { username, password, role } = req.body
@@ -23,3 +32,13 @@ userRouter.post('/register', (req, res) => {
         }
     })
 })
+userRouter.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
+    if (res.isAuthenticated()) {
+        const { _id, username, role } = req.user
+        const token = signToken(_id)
+        res.cookie('access_token', token, { httpOnly: true, sameSite: true })
+        res.status(200).json({ isAuthenticated: true, user: { username: true } })
+    }
+})
+module.exports = userRouter
+
