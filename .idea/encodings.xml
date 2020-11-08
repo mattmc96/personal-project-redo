@@ -4,5 +4,10 @@
     <file url="file://$PROJECT_DIR$/backend/controllers/password.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/models/User.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/routes/User.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/App.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Context/Auth-Context.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Auth/Auth-Services.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/index.js" charset="UTF-8" />
   </component>
 </project>
