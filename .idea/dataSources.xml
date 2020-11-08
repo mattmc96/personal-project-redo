@@ -7,5 +7,12 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-3-95-87-221.compute-1.amazonaws.com:5432/d720pg1du3co8q</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="db@cluster0.cvsqx.mongodb.net" uuid="72152a9a-242c-44b9-b5bb-44c27cc7ab8b">
+      <driver-ref>mongo</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+      <jdbc-url>mongodb+srv://mattmc1:y4xMpQafM9sdyJu1@cluster0.cvsqx.mongodb.net/db?retryWrites=true&amp;w=majority</jdbc-url>
+    </data-source>
   </component>
 </project>

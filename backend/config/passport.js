@@ -14,7 +14,7 @@ const cookieExtractor = req => {
 
 passport.use(new JwtStrategy({
     jwtFromRequest: cookieExtractor,
-    secretOrKey: process.env.JWT_SECRET_KEY
+    secretOrKey: "NoobCoder"
 },(payload, done) => {
     User.findById({_id: payload.sub}, (err, user) => {
         if(err)
@@ -26,16 +26,12 @@ passport.use(new JwtStrategy({
     })
 }))
 
-// Authenticated local strategy using username and password
 passport.use(new LocalStrategy((username, password, done) => {
   User.findOne({username}, (err, user) => {
-      // Something went wrong with database
       if(err)
           return done(err)
-      // If no user exist
       if(!user)
           return done(null, false)
-      // Check if password is correct
       user.comparePassword(password, done)
   })
 }))

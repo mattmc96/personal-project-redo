@@ -17,26 +17,26 @@ const UserSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         required: true
     },
-       connect: [{type: mongoose.Schema.Types.ObjectId, ref: 'connect'}]
+    events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Calendar' }]
 })
 
-UserSchema.pre('save', function(next){
-    if(!this.isModified('password'))
+UserSchema.pre('save', function (next) {
+    if (!this.isModified('password'))
         return next()
     bcrypt.hash(this.password, 10, (err, passwordHash) => {
-        if(err)
+        if (err)
             return next(err)
         this.password = passwordHash
         next()
     })
 })
 
-UserSchema.methods.comparePassword = function(password, cb){
+UserSchema.methods.comparePassword = function (password, cb) {
     bcrypt.compare(password, this.password, (err, isMatch) => {
-        if(err)
+        if (err)
             return cb(err)
-        else{
-            if(!isMatch)
+        else {
+            if (!isMatch)
                 return cb(null, isMatch)
             return cb(null, this)
         }
