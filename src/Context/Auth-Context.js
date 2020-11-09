@@ -3,7 +3,7 @@ import AuthService from "../components/Auth/Auth-Services";
 
 export const AuthContext = createContext();
 
-export default AuthContext ({ children }) => {
+export default ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -15,4 +15,22 @@ export default AuthContext ({ children }) => {
             setIsLoaded(true);
         });
     }, []);
+    return (
+        <div>
+            {!isLoaded ? (
+                <h1>Loading</h1>
+            ) : (
+                <AuthContext.Provider
+                    value={{
+                        user,
+                        setUser,
+                        isAuthenticated,
+                        setIsAuthenticated,
+                    }}
+                >
+                    {children}
+                </AuthContext.Provider>
+            )}
+        </div>
+    );
 };

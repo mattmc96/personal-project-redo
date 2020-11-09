@@ -2,7 +2,7 @@
   "name": "personal-project",
   "version": "0.1.0",
   "main": "backend/server/index.js",
-  "proxy": "http://localhost:5150",
+  "proxy": "http://localhost:8100",
   "private": true,
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
@@ -27,6 +27,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
