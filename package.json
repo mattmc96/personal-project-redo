@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -55,7 +56,7 @@
     ]
   },
   "devDependencies": {
-    "bluebird": "^3.7.2"
+    "react-router-dom": "^5.2.0"
   },
   "resolutions": {
     "styled-components": "^5"

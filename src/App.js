@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./Context/Auth-Context";
+import Routes from "./Routes";
 import Navbar from "./components/Nav/Navbar";
 import styled from "styled-components";
 
 const Container = styled.div`
-    background: #25274d;
+    // background: #25274d;
     height: 100vh;
 `;
 
@@ -16,6 +17,7 @@ const App = () => {
     return (
         <Container>
             <Navbar />
+            {Routes}
         </Container>
     );
 };
