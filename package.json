@@ -6,9 +6,12 @@
   "private": true,
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -28,7 +31,10 @@
     "passport-local": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-paypal-button-v2": "^2.6.2",
     "react-scripts": "4.0.0",
+    "react-smart-payment-buttons": "^0.2.3",
+    "stripe": "^8.121.0",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },

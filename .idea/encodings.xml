@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/.editorconfig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.env" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/controllers/password.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/models/User.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/routes/User.js" charset="UTF-8" />
@@ -13,6 +14,11 @@
     <file url="file://$PROJECT_DIR$/src/HOCS/PublicRoute.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Routes.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Services/AuthService.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Stripe/Checkout.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Stripe/Index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Stripe/Index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Stripe/constants/server.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Stripe/constants/stripe.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/About/About.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Admin.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Auth-Services.js" charset="UTF-8" />
@@ -27,5 +33,6 @@
     <file url="file://$PROJECT_DIR$/src/components/Profile/My-Profile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yarn-error.log" charset="UTF-8" />
   </component>
 </project>
