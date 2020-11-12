@@ -1,7 +1,22 @@
-import React, { useState } from "react";
-import mainLogo from "../../assets/logov.2.png";
+import React, { useContext, useState } from "react";
+import mainLogo from "../../Assets/logov.2.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/Auth-Context";
 import styled from "styled-components";
+import AuthService from "../../Services/AuthService";
+
+const Nav = styled.div`
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+`;
 
 const StyledLink = styled.a`
     padding: 1rem 2rem;
@@ -15,19 +30,6 @@ const StyledLink = styled.a`
     &:hover {
         color: #2e9cca;
     }
-`;
-
-const Nav = styled.div`
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
 `;
 
 const Logo = styled.div`
@@ -80,31 +82,76 @@ const H1 = styled.h1`
     color: #29648a;
 `;
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
+
+    const onClickLogoutHandler = () => {
+        AuthService.logout().then((data) => {
+            if (data.success) {
+                setUser(data.user);
+                setIsAuthenticated(false);
+            }
+        });
+    };
+
+    const unauthenticatedNavbar = () => {
+        return (
+            <Nav>
+                <Logo>
+                    <H1>Connect</H1>
+                    <img src={mainLogo} alt="logo" />
+                </Logo>
+                <Hamburger onClick={() => setIsOpen(!isOpen)}>
+                    <span />
+                    <span />
+                    <span />
+                </Hamburger>
+                <Menu isOpen={isOpen}>
+                    <StyledLink href="/">Home</StyledLink>
+                    <StyledLink href="/login">Login</StyledLink>
+                    <StyledLink href="/register">Register</StyledLink>
+                </Menu>
+            </Nav>
+        );
+    };
+
+    const authenticatedNavbar = () => {
+        return (
+            <Nav>
+                <Logo>
+                    <H1>Connect</H1>
+                    <img src={mainLogo} alt={"nothing"} />
+                </Logo>
+                <Hamburger onClick={() => setIsOpen(!isOpen)}>
+                    <span />
+                    <span />
+                    <span />
+                </Hamburger>
+                <Menu isOpen={isOpen}>
+                    <StyledLink href="/">Home</StyledLink>
+                    <StyledLink href="/join">Connect</StyledLink>
+                    <StyledLink href="/plan">Plan</StyledLink>
+                    {user.role === "admin" ? <StyledLink href="/admin">Manage Team</StyledLink> : null}
+                    <StyledLink href="/profile">My Profile</StyledLink>
+                    <StyledLink href="/about">About</StyledLink>
+                    <button type="button" onClick={onClickLogoutHandler}>
+                        Logout
+                    </button>
+                </Menu>
+            </Nav>
+        );
+    };
 
     return (
-        <Nav>
+        <>
             <li>
-                <Link to="/login">Home</Link>
+                <Link to="/login">Test</Link>
             </li>
-            <Logo>
-                <H1>Connect</H1>
-                <img src={mainLogo} alt={"nothing"} />
-            </Logo>
-            <Hamburger onClick={() => setIsOpen(!isOpen)}>
-                <span />
-                <span />
-                <span />
-            </Hamburger>
-            <Menu isOpen={isOpen}>
-                {/*<Link to="/login">Home</Link>*/}
-                <StyledLink href="/login">Connect</StyledLink>
-                <StyledLink href="/plan">Plan</StyledLink>
-                <StyledLink href="/profile">My Profile</StyledLink>
-                <StyledLink href="/about">About</StyledLink>
-            </Menu>
-        </Nav>
+            <div>
+                <ul>{!isAuthenticated ? unauthenticatedNavbar() : authenticatedNavbar()}</ul>
+            </div>
+        </>
     );
 };
 

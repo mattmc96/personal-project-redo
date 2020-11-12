@@ -5,15 +5,20 @@
     <file url="file://$PROJECT_DIR$/backend/controllers/password.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/models/User.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/routes/User.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/server/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/App.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Context/Auth-Context.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/HOCS/PrivateRoute.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/HOCS/PublicRoute.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Routes.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Services/AuthService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/About/About.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Auth/Admin.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Auth-Services.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Login.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Message.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Auth/Register.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Chat/Chat.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Chat/Join.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Events/Plan.js" charset="UTF-8" />
