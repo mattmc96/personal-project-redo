@@ -21,7 +21,6 @@
     <file url="file://$PROJECT_DIR$/src/Services/AuthService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Stripe/Checkout.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Stripe/Index.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/Stripe/Index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/About/About.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Admin.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Auth-Services.js" charset="UTF-8" />
@@ -34,6 +33,9 @@
     <file url="file://$PROJECT_DIR$/src/components/Home/Landing.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Nav/Navbar.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Profile/My-Profile.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Share/Broadcaster.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Share/ScreenShare.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Share/Viewer.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yarn-error.log" charset="UTF-8" />
