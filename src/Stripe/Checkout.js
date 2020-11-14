@@ -1,44 +1,42 @@
 import React from "react";
-import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
+import Logo from ".././Assets/logov.2.png";
+import axios from "axios";
 
-import STRIPE_PUBLISHABLE from "./constants/stripe";
-import PAYMENT_SERVER_URL from "./constants/payment";
+const Checkout = () => {
+    const STRIPE_SECRET_TEST_KEY =
+        "pk_test_51HXHnxCxFnhPgdxLfMn77enlPnZPWGh1qgwF1ViJKp0xPJDq4o4AjTpVcoo0ur7BUiky6WpYD4yPtZU1dCBUodWI00VfROeGGf";
+    const onToken = (token) => {
+        const body = {
+            amount: 999,
+            token: token,
+        };
 
-const CURRENCY = "EUR";
+        axios
+            .post("/payment", body)
+            .then((response) => {
+                console.log(response);
+                alert("Payment Success");
+            })
+            .catch((error) => {
+                console.log("Payment Error: ", error);
+                alert("Payment Error");
+            });
+    };
 
-const fromEuroToCent = (amount) => amount * 100;
-
-const successPayment = (data) => {
-    alert("Payment successful");
-};
-const errorPayment = (data) => {
-    alert("Payment Error");
-};
-const onToken = (amount, description) => (token) =>
-    axios
-        .post(
-            PAYMENT_SERVER_URL,
-
-            {
-                description,
-                source: token.id,
-                currency: CURRENCY,
-                amount: fromEuroToCent(amount),
-            }
-        )
-        .then(successPayent)
-        .catch(errorPayment);
-
-const Checkout = ({ name, description, amount }) => {
-    <StripeCheckout
-        name={name}
-        decription={description}
-        amount={fromEuroToCent(amount)}
-        token={onToken(amount, description)}
-        currency={CURRENCY}
-        stripeKey={STRIPE_PUBLISHABLE}
-    />;
+    return (
+        <StripeCheckout
+            label="Subscribe"
+            name="Connect"
+            description="Subscribe to get stripe today."
+            panelLabel="Subscribe"
+            amount={1000}
+            token={onToken}
+            stripeKey={STRIPE_SECRET_TEST_KEY}
+            image={Logo}
+            billingAddress={false}
+        />
+    );
 };
 
 export default Checkout;
