@@ -1,9 +1,14 @@
 import React from "react";
+import Viewer from ".././Share/Viewer";
+import Broadcaster from ".././Share/Broadcaster";
 
 const Chat = () => {
     return (
         <div>
-            <h1>Chat</h1>
+            <div>
+                <Viewer />
+            </div>
+            <Broadcaster />
         </div>
     );
 };

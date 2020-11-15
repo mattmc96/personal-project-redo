@@ -1,9 +1,10 @@
 import React from "react";
+import Chat from "./Chat";
 
 const Join = () => {
     return (
         <div>
-            <h1>Join</h1>
+            <Chat />
         </div>
     );
 };
