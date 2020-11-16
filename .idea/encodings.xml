@@ -27,8 +27,9 @@
     <file url="file://$PROJECT_DIR$/src/components/Auth/Login.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Message.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Auth/Register.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/components/Chat/Chat.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Chat/CreateRoom.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Chat/Join.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/components/Chat/Room.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Events/Plan.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Home/Landing.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/Nav/Navbar.js" charset="UTF-8" />

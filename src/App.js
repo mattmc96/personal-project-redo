@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import Landing from "./components/Home/Landing";
 import Login from "./components/Auth/Login";
 import Profile from "./components/Profile/My-Profile";
-import Join from "./components/Chat/Join";
+import CreateRoom from "./components/Chat/CreateRoom";
 import Plan from "./components/Events/Plan";
 import About from "./components/About/About";
 import Admin from "./components/Auth/Admin";
-import Chat from "./components/Chat/Chat";
+import Room from "./components/Chat/Room";
 import Register from "./components/Auth/Register";
 import Navbar from "./components/Nav/Navbar";
 import PrivateRoute from "./HOCS/PrivateRoute";
@@ -30,8 +30,8 @@ const App = () => {
                 <PublicRoute path="/login" component={Login} />
                 <PublicRoute path="register" component={Register} />
                 <PrivateRoute path="/plan" roles={["user", "admin"]} component={Plan} />
-                <PrivateRoute path="/join" roles={["user", "admin"]} component={Join} />
-                <PrivateRoute path="/connect" roles={["user", "admin"]} component={Chat} />
+                <PrivateRoute path="/join" roles={["user", "admin"]} component={CreateRoom} />
+                <PrivateRoute path="/room/:roomID" roles={["user", "admin"]} component={Room} />
                 <PrivateRoute path="/profile" roles={["admin"]} component={Profile} />
                 <PrivateRoute path="/about" roles={[" user", " admin"]} component={About} />
                 <PrivateRoute path="/admin" roles={[" user", " admin"]} component={Admin} />
