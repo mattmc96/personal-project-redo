@@ -10,6 +10,9 @@ const Container = styled.div`
     width: 90%;
     margin: auto;
     flex-wrap: wrap;
+    top: 30rem;
+    left: 10rem;
+    position: relative;
 `;
 
 const StyledVideo = styled.video`

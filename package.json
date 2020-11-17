@@ -38,6 +38,7 @@
     "react-paypal-button-v2": "^2.6.2",
     "react-scripts": "4.0.0",
     "react-smart-payment-buttons": "^0.2.3",
+    "simple-peer": "^9.9.3",
     "socket.io": "^3.0.1",
     "socket.io-client": "^3.0.1",
     "stripe": "^8.121.0",
@@ -70,6 +71,7 @@
     ]
   },
   "devDependencies": {
+    "jwt-then": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-stripe-checkout": "^2.6.3"
   },

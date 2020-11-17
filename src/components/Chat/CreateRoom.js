@@ -11,6 +11,7 @@ const Button = styled.button`
     top: 30rem;
     left: 10rem;
 `;
+
 const Join = (props) => {
     const create = () => {
         const id = uuid();
