@@ -15,6 +15,7 @@ export default ({ children }) => {
             setIsLoaded(true);
         });
     }, []);
+
     return (
         <div>
             {!isLoaded ? (

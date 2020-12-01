@@ -82,7 +82,7 @@ const H1 = styled.h1`
     color: #29648a;
 `;
 
-const Navbar = (props) => {
+const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
 

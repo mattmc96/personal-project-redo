@@ -1,19 +1,21 @@
 const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
-    chatroom: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: "Chatroom is required",
-        ref: "Chatroom",
+    timestamp: {
+        type: mongoose.Schema.Types.Date,
+        default: Date.now,
+    },
+    text: {
+        type: mongoose.Schema.Types.String,
+        required: true,
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: "Chatroom is required!",
-        ref: "User",
+        type: mongoose.Schema.Types.String,
+        required: true,
     },
-    message: {
-        type: String,
-        required: "Message is required!",
+    channel: {
+        type: mongoose.Schema.Types.String,
+        required: true,
     },
 });
 

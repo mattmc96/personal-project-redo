@@ -10,9 +10,11 @@
     <file url="file://$PROJECT_DIR$/backend/controllers/password.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/handlers/ErrorHandlers.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/middlewares/Auth.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/models/Channel.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/models/Chatroom.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/models/Message.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/models/User.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/models/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/routes/Chatroom.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/routes/PaymentConfig.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/routes/Payments.js" charset="UTF-8" />

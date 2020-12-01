@@ -4,8 +4,7 @@ const userRouter = express.Router();
 const passport = require("passport");
 const passportConfig = require("../config/passport");
 const JWT = require("jsonwebtoken");
-const User = require("../models/User");
-const Calendar = require("../models/Calendar");
+const models = require("../models");
 
 const signToken = (userID) => {
     return JWT.sign(
@@ -20,11 +19,11 @@ const signToken = (userID) => {
 
 userRouter.post("/register", (req, res) => {
     const { username, password, role, firstName, lastName, email } = req.body;
-    User.findOne({ username }, (err, user) => {
+    models.User.findOne({ username }, (err, user) => {
         if (err) res.status(500).json({ message: { msgBody: "Error has occurred", msgError: "error" } });
         if (user) res.status(400).json({ message: { msgBody: "Username is already taken", msgError: "error" } });
         else {
-            const newUser = new User({ username, password, role, firstName, lastName, email });
+            const newUser = new models.User({ username, password, role, firstName, lastName, email });
             newUser.save((err) => {
                 if (err) res.status(500).json({ message: { msgBody: "Error has occurred", msgError: "error" } });
                 else res.status(201).json({ message: { msgBody: "Account successfully created", msgError: "" } });
@@ -48,7 +47,7 @@ userRouter.get("/logout", passport.authenticate("jwt", { session: false }), (req
 });
 
 userRouter.post("/calendar", passport.authenticate("jwt", { session: false }), (req, res) => {
-    const calendar = new Calendar(req.body);
+    const calendar = new models.Calendar(req.body);
     calendar.save((err) => {
         if (err) res.status(500).json({ message: { msgBody: "Error has occurred", msgError: "error" } });
         else {
@@ -62,7 +61,7 @@ userRouter.post("/calendar", passport.authenticate("jwt", { session: false }), (
 });
 
 userRouter.get("/events", passport.authenticate("jwt", { session: false }), (req, res) => {
-    User.findById({ _id: req.user._id })
+    models.User.findById({ _id: req.user._id })
         .populate("events")
         .exec((err, document) => {
             if (err) res.status(500).json({ message: { msgBody: "Error has occurred", msgError: "" } });
@@ -81,6 +80,69 @@ userRouter.get("/admin", passport.authenticate("jwt", { session: false }), (req,
 userRouter.get("/authenticated", passport.authenticate("jwt", { session: false }), (req, res) => {
     const { username, role } = req.user;
     res.status(200).json({ isAuthenticated: true, user: { username, role } });
+});
+
+userRouter.get("/info", (req, res) => {
+    if (!req.user) return res.status(401).end();
+
+    models.User.find({}, { "local.username": 1, "local.online": 1, _id: 0 }, (err, users) => {
+        if (err) {
+            return res.status(500).json({ error: true });
+        }
+
+        res.json(users);
+    });
+});
+
+userRouter.get("/:username", (req, res) => {
+    req.params.username = req.params.username.toLowerCase();
+
+    models.User.findOne(
+        {
+            "local.username": req.params.username,
+        },
+        (err, user) => {
+            if (err) {
+                return res.status(500).json({ error: true });
+            }
+
+            return res.json({ alreadyInUse: !!user });
+        }
+    );
+});
+
+userRouter.get("/channels", (req, res) => {
+    if (!req.user) return res.status(401).end();
+
+    models.User.findOne({ "local.username": req.user }, { "local.channels": 1, _id: 0 }, (err, channels) => {
+        if (err) {
+            return res.status(500).json({ error: true });
+        }
+
+        res.json(channels);
+    });
+});
+
+userRouter.get("/:name/messages", (req, res) => {
+    if (!req.user) return res.status(401).end();
+
+    req.params.name = req.params.name.toLowerCase();
+
+    models.User.findOne({
+        "local.username": req.user,
+        "local.channels": req.params.name,
+    })
+        .exec()
+        .then((user) => {
+            if (user) {
+                return models.Message.find({ channel: req.params.name }).exec();
+            }
+            throw "Not joined to channel";
+        })
+        .then((messages) => res.json(messages))
+        .then(null, (error) => {
+            res.status(401).json({ error });
+        });
 });
 
 module.exports = userRouter;

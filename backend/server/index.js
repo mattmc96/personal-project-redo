@@ -3,37 +3,46 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 const userRouter = require("../routes/User");
-const chatroomRoutes = require("../routes/Chatroom");
-const configureRoutes = require("../routes/PaymentConfig");
-// const errorHandlers = require("../handlers/errorHandlers");
+// const chatroomRoutes = require("../routes/Chatroom");
+// configureRoutes = require("../routes/PaymentConfig");
+const morgan = require("morgan");
+// const pusher = require("pusher");
+
+const { SERVER_PORT, CONNECTION_STRING } = process.env;
+const port = SERVER_PORT || 9000;
+const uri = CONNECTION_STRING;
 
 const app = express();
 
-// Error handlers
-// app.use(errorHandlers.notFound);
-// if (process.env.ENV === "DEVELOPMENT") {
-//     app.use(errorHandlers.developmentErrors);
-// } else {
-//     app.use(errorHandlers.productionErrors);
-// }
-
+app.use(morgan("dev"));
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/user", userRouter);
-app.use("/chatroom", chatroomRoutes);
-configureRoutes(app);
+// app.use("/chatroom", chatroomRoutes);
+// configureRoutes(app);
 
-const { SERVER_PORT, CONNECTION_STRING } = process.env;
+app.listen(port, (err) => {
+    if (err) console.log("Error in server setup");
+    console.log(`👨 To Infinity & Beyond on Port => ${port}`);
 
-mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-    console.log("successfully connected to database");
-});
+    try {
+        mongoose.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+        });
+    } catch (error) {
+        console.error(error);
+    }
 
-app.listen(SERVER_PORT, () => {
-    console.log(`Server connected on port: ${SERVER_PORT}`);
+    mongoose.connection.on("error", (e) => {
+        console.log("mongo connect error!");
+    });
+    mongoose.connection.on("connected", () => {
+        console.log("🚀 DB Blasting Off");
+    });
 });

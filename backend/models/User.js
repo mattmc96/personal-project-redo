@@ -53,8 +53,22 @@ const UserSchema = new mongoose.Schema(
             type: Date,
             required: false,
         },
+        channels: [
+            {
+                type: String,
+            },
+        ],
+        online: {
+            type: Boolean,
+            default: false,
+        },
 
-        events: [{ type: mongoose.Schema.Types.ObjectId, ref: "Calendar" }],
+        events: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Calendar",
+            },
+        ],
     },
     { timestamps: true }
 );

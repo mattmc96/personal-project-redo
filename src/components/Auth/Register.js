@@ -56,6 +56,7 @@ const Label = styled.p`
     position: relative;
     left: -10rem;
 `;
+
 const Register = (props) => {
     const [user, setUser] = useState({ firstName: "", lastName: "", username: "", password: "", role: "" });
     const [message, setMessage] = useState(null);
