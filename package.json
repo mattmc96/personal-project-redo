@@ -19,6 +19,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "debug": "^4.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -33,6 +34,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "passport.socketio": "^3.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-paypal-button-v2": "^2.6.2",
@@ -71,6 +73,7 @@
     ]
   },
   "devDependencies": {
+    "helmet": "^4.2.0",
     "jwt-then": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-stripe-checkout": "^2.6.3"

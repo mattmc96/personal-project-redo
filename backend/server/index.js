@@ -1,29 +1,62 @@
 require("dotenv").config();
-const express = require("express");
 const mongoose = require("mongoose");
+const express = require("express");
+const morgan = require("morgan");
+const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const userRouter = require("../routes/User");
-// const chatroomRoutes = require("../routes/Chatroom");
-// configureRoutes = require("../routes/PaymentConfig");
-const morgan = require("morgan");
-// const pusher = require("pusher");
+const helmet = require("helmet");
+const session = require("express-session");
+const passportSocketIo = require("passport.socketio");
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+const debug = require("debug")("server");
 
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 const port = SERVER_PORT || 9000;
 const uri = CONNECTION_STRING;
 
-const app = express();
+const sessionSettings = {
+    key: "express.sid",
+    // store?
+    secret: "thisKSDOFksNeI",
+    cookie: { httpOnly: false },
+};
+// Middlewares
+const middlewares = [
+    morgan("dev"),
+    helmet(),
+    cors(),
+    express.json(),
+    express.urlencoded({ extended: true }),
+    session(sessionSettings),
+    cookieParser(),
+    express.json(),
+];
+middlewares.forEach((middleware) => app.use(middleware));
 
-app.use(morgan("dev"));
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(express.json());
+// Route Middlewares
 app.use("/user", userRouter);
-// app.use("/chatroom", chatroomRoutes);
-// configureRoutes(app);
+
+io.use(
+    passportSocketIo.authorize({
+        key: "express.sid",
+        // secret: ,
+        store: sessionStore,
+        success: (data, accept) => accept(),
+        fail: (data, message, error, accept) => {
+            if (error) {
+                debug(`error: ${message}`);
+
+                accept(new Error("Unauthorized"));
+            } else {
+                debug(`ok: ${message}`);
+                accept(new Error("Unauthorized"));
+            }
+        },
+    })
+);
 
 app.listen(port, (err) => {
     if (err) console.log("Error in server setup");
